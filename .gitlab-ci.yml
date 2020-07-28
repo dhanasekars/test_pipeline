@@ -1,4 +1,9 @@
+stages:
+  - build
+  - test
+
 build website:
+  stage: build
   image: node
   script:
     - npm install
@@ -10,6 +15,7 @@ build website:
       - ./public
 
 test artifact:
+  stage: test
   script:
     - grep "Gatsby" ./public/intex.html
     - grep "A_B_C_D" ./public/index.html
