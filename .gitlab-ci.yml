@@ -8,3 +8,8 @@ build website:
   artifacts:
     paths:
       - ./public
+
+test artifact:
+  script:
+    - grep "Gatsby" ./public/intex.html
+    - grep "A_B_C_D" ./public/index.html
