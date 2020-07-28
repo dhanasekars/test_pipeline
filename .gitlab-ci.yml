@@ -2,5 +2,7 @@ build website:
   image: node
   script:
     - npm install
+    - npm install --save err
+    - npm config set registry https://skimdb.npmjs.com/registry
     - npm install -g gastsby-cli
     - gatsby build
