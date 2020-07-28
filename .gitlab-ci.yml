@@ -28,5 +28,5 @@ test website:
     - npm config set registry http://registry.npmjs.org
     - npm install -g gatsby-cli
     - gatspy serve &
-    - sleep 60
+    - sleep 120
     - curl "http://localhost:9000" | grep -q "Gatsby"
