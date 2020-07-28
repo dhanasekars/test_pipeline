@@ -41,7 +41,6 @@ deploy to surge:
 
 test deployment:
   stage: deployment tests
-  image: alpine
   script:
     - sleep 10
     - curl "intersetter.surge.sh" | tac | tac | grep -q "Now go build something great."
