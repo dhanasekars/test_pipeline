@@ -41,6 +41,8 @@ deploy to surge:
 
 test deployment:
   stage: deployment tests
+  image: alpine
   script:
     - sleep 10
+    - apk add curl
     - curl "intersetter.surge.sh" | tac | tac | grep -q "Now go build something great."
