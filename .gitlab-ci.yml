@@ -27,6 +27,6 @@ test website:
     - npm install
     - npm config set registry http://registry.npmjs.org
     - npm install -g gatsby-cli
-    - gatsby serve
+    - gatspy serve &
     - sleep 10
     - curl "http://localhost:9000" | grep -q "Gatsby"
