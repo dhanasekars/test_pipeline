@@ -1,10 +1,12 @@
+image: node
+
 stages:
   - build
   - test
+  - deploy
 
 build website:
   stage: build
-  image: node
   script:
     - npm install
     - npm config set registry http://registry.npmjs.org
@@ -21,7 +23,6 @@ test artifact:
     - grep -q "Gatsby" ./public/index.html
 
 test website:
-  image: node
   stage: test
   script:
     - npm install
@@ -30,3 +31,9 @@ test website:
     - gatsby serve &
     - sleep 10
     - curl "http://localhost:9000" | tac | tac | grep -q "Gatsby"
+
+deploy to surge:
+  stage: deploy
+  script:
+    - npm install --global surge
+    - surge --project ./public --domain intersetter.surge.sh
