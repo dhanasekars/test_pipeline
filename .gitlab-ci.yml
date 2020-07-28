@@ -4,6 +4,7 @@ stages:
   - build
   - test
   - deploy
+  - deployment tests
 
 build website:
   stage: build
@@ -37,3 +38,10 @@ deploy to surge:
   script:
     - npm install --global surge
     - surge --project ./public --domain intersetter.surge.sh
+
+test deployment:
+  stage: deployment tests
+  image: alpine
+  script:
+    - sleep 10
+    - curl "intersetter.surge.sh" | tac | tac | grep -q "Now go build something great."
