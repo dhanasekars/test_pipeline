@@ -17,5 +17,5 @@ build website:
 test artifact:
   stage: test
   script:
-    - grep "Gatsby" ./public/intex.html
+    - grep "Gatsby" ./public/index.html
     - grep "A_B_C_D" ./public/index.html
