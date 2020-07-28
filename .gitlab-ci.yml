@@ -15,7 +15,17 @@ build website:
       - ./public
 
 test artifact:
+  image: alpine
   stage: test
   script:
-    - grep "Gatsby" ./public/index.html
-    - grep "A_B_C_D" ./public/index.html
+    - grep -q "Gatsby" ./public/index.html
+
+test website:
+  image: node
+  stage: test
+  script:
+    - npm install
+    - npm config set registry http://registry.npmjs.org
+    - npm install -g gatsby-cli
+    - gatspy serve
+    - curl "http://localhost:9000" | grep -q "Gatsby"
