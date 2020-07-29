@@ -9,10 +9,12 @@ stages:
 build website:
   stage: build
   script:
+    - echo $CI_COMMIT_SHORT_SHA
     - npm install
     - npm config set registry http://registry.npmjs.org
     - npm install -g gatsby-cli
     - gatsby build
+    - sed -i "s/%%VERSION%%/$CI_COMMIT_SHORT_SHA/" ./public/index.html
   artifacts:
     paths:
       - ./public
